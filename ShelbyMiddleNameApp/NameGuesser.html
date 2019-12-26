@@ -1,0 +1,61 @@
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <title>Name Guesser</title>
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> 
+</head>
+
+<body>
+    
+    <div class="jumbotron">
+    <h1>Welcome to the Shelby Middle name guesser</h1>
+
+    <h3 id="nameguess"></h3>
+
+
+    <button onclick="verify(1)" type="button" class="btn btn-primary">yes</button>
+    <button onclick="verify(0)" type="button" class="btn btn-danger">no</button>
+
+    <h3 id="result"></h3>
+</div>
+
+</body>
+<script>
+
+    function getName(){
+        
+    let xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+     document.getElementById("nameguess").innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("GET", "http://localhost:8080/name", true);
+  xhttp.send();
+
+    };
+
+    getName();
+
+    function verify(choice){
+  let xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+    //  document.getElementById("nameguess").innerHTML = this.responseText;
+        getName();
+        document.getElementById("result").innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("GET", "http://localhost:8080/name/"+choice, true);
+  xhttp.send();
+        
+
+    }
+
+
+
+
+
+</script>
