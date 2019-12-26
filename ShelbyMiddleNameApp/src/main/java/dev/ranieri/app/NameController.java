@@ -86,7 +86,7 @@ public class NameController {
 				"     document.getElementById(\"nameguess\").innerHTML = this.responseText;\r\n" + 
 				"    }\r\n" + 
 				"  };\r\n" + 
-				"  xhttp.open(\"GET\", \"http://localhost:8080/name\", true);\r\n" + 
+				"  xhttp.open(\"GET\", \"http://ec2-54-234-22-212.compute-1.amazonaws.com:8080/name\", true);\r\n" + 
 				"  xhttp.send();\r\n" + 
 				"\r\n" + 
 				"    };\r\n" + 
@@ -103,7 +103,7 @@ public class NameController {
 				"        document.getElementById(\"result\").innerHTML = this.responseText;\r\n" + 
 				"    }\r\n" + 
 				"  };\r\n" + 
-				"  xhttp.open(\"GET\", \"http://localhost:8080/name/\"+choice, true);\r\n" + 
+				"  xhttp.open(\"GET\", \"http://ec2-54-234-22-212.compute-1.amazonaws.com:8080/name/\"+choice, true);\r\n" + 
 				"  xhttp.send();\r\n" + 
 				"        \r\n" + 
 				"\r\n" + 
