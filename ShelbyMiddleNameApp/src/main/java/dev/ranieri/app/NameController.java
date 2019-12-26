@@ -49,5 +49,71 @@ public class NameController {
 		}
 	}
 	
+	@RequestMapping(value = "main", method = RequestMethod.GET)
+	public String mainPage() {
+		// I sad I wrote this
+		
+		return "\r\n" + 
+				"<head>\r\n" + 
+				"    <link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css\">\r\n" + 
+				"    <title>Name Guesser</title>\r\n" + 
+				"    <meta http-equiv=\"Content-Security-Policy\" content=\"upgrade-insecure-requests\"> \r\n" + 
+				"</head>\r\n" + 
+				"\r\n" + 
+				"<body>\r\n" + 
+				"    \r\n" + 
+				"    <div class=\"jumbotron\">\r\n" + 
+				"    <h1>Welcome to the Shelby Middle name guesser</h1>\r\n" + 
+				"\r\n" + 
+				"    <h3 id=\"nameguess\"></h3>\r\n" + 
+				"\r\n" + 
+				"\r\n" + 
+				"    <button onclick=\"verify(1)\" type=\"button\" class=\"btn btn-primary\">yes</button>\r\n" + 
+				"    <button onclick=\"verify(0)\" type=\"button\" class=\"btn btn-danger\">no</button>\r\n" + 
+				"\r\n" + 
+				"    <h3 id=\"result\"></h3>\r\n" + 
+				"</div>\r\n" + 
+				"\r\n" + 
+				"</body>\r\n" + 
+				"<script>\r\n" + 
+				"\r\n" + 
+				"    function getName(){\r\n" + 
+				"        \r\n" + 
+				"    let xhttp = new XMLHttpRequest();\r\n" + 
+				"\r\n" + 
+				"    xhttp.onreadystatechange = function() {\r\n" + 
+				"    if (this.readyState == 4 && this.status == 200) {\r\n" + 
+				"     document.getElementById(\"nameguess\").innerHTML = this.responseText;\r\n" + 
+				"    }\r\n" + 
+				"  };\r\n" + 
+				"  xhttp.open(\"GET\", \"http://localhost:8080/name\", true);\r\n" + 
+				"  xhttp.send();\r\n" + 
+				"\r\n" + 
+				"    };\r\n" + 
+				"\r\n" + 
+				"    getName();\r\n" + 
+				"\r\n" + 
+				"    function verify(choice){\r\n" + 
+				"  let xhttp = new XMLHttpRequest();\r\n" + 
+				"\r\n" + 
+				"    xhttp.onreadystatechange = function() {\r\n" + 
+				"    if (this.readyState == 4 && this.status == 200) {\r\n" + 
+				"    //  document.getElementById(\"nameguess\").innerHTML = this.responseText;\r\n" + 
+				"        getName();\r\n" + 
+				"        document.getElementById(\"result\").innerHTML = this.responseText;\r\n" + 
+				"    }\r\n" + 
+				"  };\r\n" + 
+				"  xhttp.open(\"GET\", \"http://localhost:8080/name/\"+choice, true);\r\n" + 
+				"  xhttp.send();\r\n" + 
+				"        \r\n" + 
+				"\r\n" + 
+				"    }\r\n" + 
+				"\r\n" + 
+				"\r\n" + 
+				"\r\n" + 
+				"\r\n" + 
+				"\r\n" + 
+				"</script>";
+	}
 
 }
